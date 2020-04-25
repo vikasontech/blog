@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>test on Vikas Blogs</title>
+    <link>http://www.example.com/categories/test/</link>
+    <description>Recent content in test on Vikas Blogs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 22 Apr 2020 22:19:36 +0700</lastBuildDate>
+    
+	<atom:link href="http://www.example.com/categories/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>my first post</title>
+      <link>http://www.example.com/posts/my-first-post/</link>
+      <pubDate>Wed, 22 Apr 2020 22:19:36 +0700</pubDate>
+      
+      <guid>http://www.example.com/posts/my-first-post/</guid>
+      <description>This is an H1 This is an H2 This is an H6 This is also an H1 This is also an H2 Italic characters
+Italic characters
+bold characters
+bold charactersabcd
+strikethrough text
+Unordered list
+ Item 1 Item 2 Item 3  Item 3a Item 3b Item 3c    Ordered list
+ Step 1 Step 2 Step 3  Step 3.1 Step 3.2 Step 3.3    List in list</description>
+    </item>
+    
+  </channel>
+</rss>
