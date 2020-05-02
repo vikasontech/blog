@@ -1,0 +1,69 @@
+baseurl = "https://vikasontech.github.io"
+title = "Vikas Blogs"
+theme = "erblog"
+paginate = 3
+languageCode = "en"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+footnoteReturnLinkContents = "^"
+
+[params]
+    author = "Vikas Verma"
+    logo  = "/self/img/avater.jpg"
+    # logo = "//blog.ertuil.top/avater.png"
+    bio = """
+    <p> This is BIO. You can write something here. </p>
+    <br />
+    <p>Also all html tags such as <a href="https://github.com/ertuil/erblog">link</a> are a good here.</p>
+    """
+    copyright = "Copyright © 2019–2020, Vikas Verma"
+
+
+#[[menu.main]]
+#    identifier = "about"
+#    name = "About"
+#    url = "/about/"
+#    weight = 10
+
+[[menu.footer]]
+    identifier = "home"
+    name = "home"
+    url = "/"
+    weight = 1
+
+[[menu.footer]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[[menu.icon]]
+    name= "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/vikasontech/"
+[[menu.icon]]
+    name = "fab fa-twitter"
+    weight = 2
+    url = "https://twitter.com/vikas_verma_on/"
+[[menu.icon]]
+    name = "fab fa-linkedin"
+    weight = 3
+    url = "https://www.linkedin.com/in/vikaskumarverma/"
+[[menu.icon]]
+    name = "far fa-envelope-open"
+    weight = 4
+    url = "mailto:vikason@gmail.com"
+[[menu.icon]]
+    name = "fab fa-rss fa-2x"
+    weight = 5
+    url = "index.xml"
+    rel = "alternate"
+    type = "application/rss+xml"
+
+
+

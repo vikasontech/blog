@@ -1,0 +1,91 @@
+#baseURL = "http://example.org/"
+#languageCode = "en-us"
+#title = "My New Hugo Site"
+#theme = "hugo-coder"
+#languagecode = "en"
+#defaultcontentlanguage = "en"
+
+baseurl = "https://vikasontech.github.io"
+title = "Vikas Blogs"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+#googleAnalytics = "UA-7131036-4"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "b2"
+#pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+#disqusShortname = "yourdiscussshortname"
+
+[params]
+    author = "Vikas Verma"
+    info =   "Blogger, Developer, Scurm Master"
+    description = "Vikas's personal website"
+    keywords = "Blogger, Developer, Scurm Master"
+    avatarurl = "images/avatar.jpg"
+    favicon_32 = "/img/favicon-32x32.png"
+    favicon_16 = "/img/favicon-16x16.png"
+
+    footercontent = "#java #psm #scala #aws #springboot #keycloak"
+
+    hidecredits = true
+    hidecopyright = false
+
+    rtl = false
+
+    math = false
+   # custom_css = ["css/custom.css"]
+   
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+# Social links
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/vikasontech/"
+[[params.social]]
+    name = "Twitter"
+    icon = "fab fa-twitter fa-2x"
+    weight = 2
+    url = "https://twitter.com/vikas_verma_on/"
+[[params.social]]
+    name = "LinkedIn"
+    icon = "fab fa-linkedin"
+    weight = 3
+    url = "https://www.linkedin.com/in/vikaskumarverma/"
+[[params.social]]
+    name = "Mail"
+    icon = "far fa-envelope-open"
+    weight = 4
+    url = "mailto:vikason@gmail.com"
+[[params.social]]
+    name = "RSS"
+    icon = "fas fa-rss"
+    weight = 6
+    url = "index.xml"
+    rel = "alternate"
+    type = "application/rss+xml"
+# Menu links
+[[menu.main]]
+    name = "Blogs"
+    weight = 1
+    url  = "/posts/"
+[[menu.main]]
+    name = "Contact Me"
+    weight = 2
+    url  = "https://forms.gle/euaK9EqHRtizzzwx6"
+
+#[[menu.main]]
+#    name = "About"
+#    weight = 2
+#    url = "/about/"
