@@ -1,7 +1,7 @@
 baseurl = "https://vikasontech.github.io"
 title = "Vikas Blogs"
 theme = "erblog"
-paginate = 3
+paginate = 10
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
@@ -12,12 +12,12 @@ footnoteReturnLinkContents = "^"
     logo  = "/self/img/avater.jpg"
     # logo = "//blog.ertuil.top/avater.png"
     bio = """
-    <p> This is BIO. You can write something here. </p>
-    <br />
-    <p>Also all html tags such as <a href="https://github.com/ertuil/erblog">link</a> are a good here.</p>
+    <p>Passionate developer with 9+ years of development experience. Certified Professional Scrum Master, Blogger.</p>
+    <br/>
+    <p>#java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming</p>
+    <br/><p>Welcome to my world</p>
     """
     copyright = "Copyright © 2019–2020, Vikas Verma"
-
 
 #[[menu.main]]
 #    identifier = "about"
@@ -65,5 +65,7 @@ series = "series"
     rel = "alternate"
     type = "application/rss+xml"
 
-
+[readingTime]
+one = "One minute to read"
+other = "{{.Count}} minutes to read"
 

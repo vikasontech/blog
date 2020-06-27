@@ -2,12 +2,12 @@
 draft = false 
 date = 2020-05-01T14:45:44+07:00
 title = "Spring boot reactive and resilience4j circuit breaker example"
-description = ""
+description = "Blog on how to use Resillien4j, with Kotlin, Spring boot and webflux"
 slug = "spring-boot-resilience4j-circuitbreaker-example" 
 tags = ["spring-boot","resilience4j","circuitbreaker","example"]
 categories = ["Technical"]
 externalLink = ""
-series = []
+series = ["resilience4j"]
 +++
 
 ***Introduction***
@@ -29,8 +29,6 @@ We add following dependency in the demo application -
 * Spring Reactive Web
 * Spring Boot Actuator 
 * Resilience4J 
-
-I am using `kotlin` and `java11` for this demo.
 
 ---
 
@@ -65,7 +63,7 @@ I use *[httpie](https://httpie.org/)* to call the rest api, you can use your cho
 
 The output should be as below - 
 
-![run application](https://nqw3wq.ch.files.1drv.com/y4mChythQIVpDuv2TN9amUOCdcDCEqH9sJiSktCkxKeAx6AmnEPUXdsojUK73fZC0ckHlIoqxvRLYstK9q2HRnb6GXSdPt2aL6-4oR_HVdcRkMU4UhCj-htVgh59WaP8Y7zKwsjKn4BZdKUigPK8g5tqgakk4D-yiz0PrVL3f7BFmQW0RcaKJoFknyiHcq7TTz0MKlsHk_LJErW_nCx7SOK4g?width=1956&height=732&cropmode=none)
+![run application](https://m6w3wq.ch.files.1drv.com/y4mICXx6Qtix6Eh0yHL4B6io9DA9IIT2suajmVd3mL8kqxldg7M3J6krf6W1hn_4M9oy-fw6aXA5sBeHTaZD5HrPUNSpkL9kWjFiheNpCws3pOTYMR7vEQEI_ub8Pl7stS8R75DFUrEa2fVLyFqugLadFH3ze9MZGM4My0__-qcWgCo_iPm7dow1kiI0UxLpiIhjEHOZATA4w8bGl43hUbU2w?width=1954&height=718&cropmode=none)
 
 If you pass `id` value below `1` then the api should give error as below - 
 
@@ -99,10 +97,15 @@ Add dependency for resilience4j. We need to add `spring-cloud-starter-circuitbre
 
 To provide a default configuration for all of your circuit breakers create a `Customize` bean that is passed a `Resilience4JCircuitBreakerFactory` or `ReactiveResilience4JCircuitBreakerFactory`. The `configureDefault` method can be used to provide a default configuration.
 
-{{< gist vikasontech 
-850ff000a738550e1855ed12bd5f4f53 >}}
+{{< gist vikasontech 850ff000a738550e1855ed12bd5f4f53 >}}
 
 ---
+
+***Wrap the service call in circuit breaker factory***
+
+Wrap the service call with the circuit breaker factory method like below - 
+
+{{< gist vikasontech 5656517796cd30c23b45c1baae6f0cf0 >}}
 
 ***Run application***
 
@@ -110,13 +113,13 @@ Success case
 
 `http :8080/process?id=1`
 
-![run application](https://nqw3wq.ch.files.1drv.com/y4mChythQIVpDuv2TN9amUOCdcDCEqH9sJiSktCkxKeAx6AmnEPUXdsojUK73fZC0ckHlIoqxvRLYstK9q2HRnb6GXSdPt2aL6-4oR_HVdcRkMU4UhCj-htVgh59WaP8Y7zKwsjKn4BZdKUigPK8g5tqgakk4D-yiz0PrVL3f7BFmQW0RcaKJoFknyiHcq7TTz0MKlsHk_LJErW_nCx7SOK4g?width=1956&height=732&cropmode=none)
+![run application](https://m6w3wq.ch.files.1drv.com/y4mICXx6Qtix6Eh0yHL4B6io9DA9IIT2suajmVd3mL8kqxldg7M3J6krf6W1hn_4M9oy-fw6aXA5sBeHTaZD5HrPUNSpkL9kWjFiheNpCws3pOTYMR7vEQEI_ub8Pl7stS8R75DFUrEa2fVLyFqugLadFH3ze9MZGM4My0__-qcWgCo_iPm7dow1kiI0UxLpiIhjEHOZATA4w8bGl43hUbU2w?width=1954&height=718&cropmode=none)
 
 Application fail 
 
-`http :8080/process?id=-1`
+`http :8080/process?id=0`
 
-![run application](https://nkw3wq.ch.files.1drv.com/y4mDd9flhBDUxfy4JrdTAkuuAMmPDvy7cnC0XkvQa9nRX1TSyz83av8mgulGrkY9c2btN_K3rQHh1MySgPToJeUhJz4zY8giEczR9_HBxHtXimHpO86BhyD4pMVfUPev7zmvc1NVfJZKqBDDdcnTxnJpqeyLyXD0RWYWI7lxwbZn4-QcRXKJQu4FslzkuMgqt4QoZhcsUQfnUxo_v22x0Zeqg?width=1956&height=732&cropmode=none)
+![run application](https://mqw3wq.ch.files.1drv.com/y4mB5scpkl2oPPlryG_FDk3c53XtJr-uq7Vjq0_FuZiEXA_iWS79DdaSjYlvgeQ-Nhk-i6pUbenWE6x_7R_LbXn0UAsz8xEajyJgXGAVuuEG4lYoMkF1ic5gE2RFRiabKFsZGiEMxQ4eVe4DFIGBW1VWVPWI--R7oRQB6KNrWxpoRorqNHkeZ6zBCfUjtnbxhdZcqdiIKZX8VUTXA3vRZskIg?width=1954&height=718&cropmode=none)
 
 ---
 

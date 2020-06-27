@@ -7,7 +7,7 @@ slug = ""
 tags = ["keycloak","security","spring-boot"]
 categories = ["Technical"]
 externalLink = ""
-series = []
+series = ["keycloak"]
 +++
 
 **Setup Realm and clients in keycloak**

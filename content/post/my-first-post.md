@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = true 
 date = 2020-04-22T22:19:36+07:00
 title = "my first post"
 description = "my first post description"
@@ -7,6 +7,7 @@ slug = ""
 tags = ["my","first"]
 categories = ["test","sample"]
 externalLink = ""
+auther = "Vikas Verma"
 series = []
 +++
 # This is an H1

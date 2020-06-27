@@ -7,7 +7,7 @@ slug = ""
 tags = ["keycloak","docker","setup"]
 categories = ["Technical"]
 externalLink = ""
-series = []
+series = ["keycloak"]
 
 +++
 
