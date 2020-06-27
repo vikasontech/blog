@@ -32,7 +32,7 @@ We already saw how to make the reactive basic application in a  previous blog. N
 
 ***Adding dependencies***
 
-We need to add the following  dependencies in the project -
+We need to add the following dependencies in the project -
 
 * resilience4j-reactor
 * resilience4j-circuitbreaker
@@ -44,7 +44,7 @@ We need to add the following  dependencies in the project -
 
 ***Add configuration for the circuit breaker***
 
-Open `application.yml` and add the following configuration for the the circuit breaker - 
+Open `application.yml` and add the following configuration for the circuit breaker - 
 
 {{< highlight yml >}}
 resilience4j.circuitbreaker:
@@ -83,7 +83,6 @@ Configures the type of the sliding window which is used to record the outcome of
 `minimumNumberOfCalls`
 
 Configures the minimum number of calls which are required (per sliding window period) before the CircuitBreaker can calculate the error rate or slow call rate.
-
 
 `waitDurationInOpenState`
 
