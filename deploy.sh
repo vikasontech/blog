@@ -1,6 +1,6 @@
 #!/bin/sh
 
-get add .
+git add .
 git commit -m "some changes"
 git push origin master 
 

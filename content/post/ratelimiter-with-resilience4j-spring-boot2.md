@@ -10,7 +10,7 @@ draft: false
 
 ***Introduction***
 
-Rate limiting is technique to help to limit the number of requests or type of request received by by a server. It help to scale and increase the reliability of the system. As per resilience4j doc    
+Rate limiting is technique to help to limit the number of requests or type of request received by a server. It help to scale and increase the reliability of the system. As per resilience4j doc    
 > Rate limiting is an imperative technique to prepare your API for scale and establish high availability and reliability of your service. But also, this technique comes with a whole bunch of different options of how to handle a detected limits surplus, or what type of requests you want to limit. You can simply decline this over limit request, or build a queue to execute them later or combine these two approaches in some way.
 
 ---
@@ -70,7 +70,7 @@ I created a simple service that takes no arguments, and return some string mono.
 
 @RateLimiter(name="processService", fallbackMethod = "processFallback")
 fun process(): Mono<String> {
-  return Mono.just("ah what do you want ...")
+  return Mono.just("Hello World ...")
 }
 
 {{< /highlight >}}
@@ -158,7 +158,4 @@ The full source code is available at [GitHub](https://github.com/vikasontech/spr
 ***Reference***
 - https://resilience4j.readme.io/docs/getting-started-3
 - https://resilience4j.readme.io/docs/ratelimiter
-
-
-
 
