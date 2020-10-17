@@ -1,7 +1,11 @@
 ---
-title: "Graceful Shutdown"
+title: "Spring Boot Graceful Shutdown Example"
 date: 2020-10-08T14:38:25+07:00
 draft: true
+description: "Graceful shutdown using spring boot"
+tags: ["spring-boot"]
+categories: ["Technical"]
+externalLink: "A graceful shutdown means, in case of system termination, stop receiving new requests and also wait before termination for the in-process requests to finish. Spring provides a shutdown hook with every spring application to achieve it."
 ---
 
 # Introduction
@@ -25,24 +29,17 @@ The implementation is simple, just create a controller class with one get endpoi
 
 {{< gist vikasontech a5e54ec339ddc674b0ddb5525c5014cf>}}
 
-To enable graceful shutdown you need to configure `server.shutdown` property, as shown in the following example:
+Now endpoint `/test` will take the 60s to finish. We can now shutdown the application now. I use the spring actuator shutdown API to kill the application. You can also kill the application by killing the process or stop the server from the IDE.
 
-```
-server:
-  shutdown: GRACEFUL
-```
+# Enable Graceful Shutdown 
+
+To enable graceful shutdown you need to configure `server.shutdown` property, as shown in the following example:
 
 Also to configure the timeout period configure the `spring.lifecycle.timeout-per-shutdown-phase` property, as shown in the following example:
 
-```
-spring:
-  lifecycle:
-    timeout-per-shutdown-phase: 10s
-```
+{{< gist vikasontech 08d48d527a7eee3f0cafe7995b9b5446>}}
 
-See spring refrence document [here](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-graceful-shutdown)
-
-Now endpoint `/test` will take the 60s to finish. We can now shutdown the application now. I use the spring actuator shutdown API to kill the application. you can also kill the application by killing the process or stop the server from the IDE.
+See spring reference document [here](https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-graceful-shutdown)
 
 Call the shutdown endpoint and see the output - 
 
@@ -54,7 +51,7 @@ $ http POST :8080/actuator/shutdown -b
 
 ```
 
-Now, wait for the application to gracefully shutdown. oh, wait I get null pointer exception -
+Now, wait for the application to gracefully shutdown. I get null pointer exception -
 
 ```
 java.lang.NullPointerException: null
@@ -63,7 +60,7 @@ java.lang.NullPointerException: null
 	at org.springframework.web.servlet.HandlerExecutionChain.triggerAfterCompletion(HandlerExecutionChain.java:179) ```
 ```
 
-This is because tomcat shutting down while the request is still in progress. you can see about this [issue here](https://github.com/spring-projects/spring-boot/issues/16407)
+This is because tomcat shutting down while the request is still in progress. You can see about this [issue here](https://github.com/spring-projects/spring-boot/issues/16407)
 
 So we need to tell the tomcat to wait for a certain time in case any request is still in progress, before shutdown. To do that we need to create a bean for `ServletWebServerFactory` and set the `unloadDelay` time in the context like this -
 
@@ -83,7 +80,7 @@ $ http POST :8080/actuator/shutdown -b
 
 # Output
 
-The application is waiting to finish. after 60 seconds. I got the response like this - 
+The application is waiting to finish and after waiting for 60 seconds. I got the response like this - 
 
 ```
 $ http :8080/test  --timeout 120
