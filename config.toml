@@ -1,5 +1,4 @@
-#baseurl = "https://vikasontech.netlify.com"
-baseurl = ""
+baseurl = "https://vikasontech.netlify.com"
 title = "Vikas Blogs"
 theme = "erblog"
 paginate = 10
