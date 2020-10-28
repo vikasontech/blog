@@ -1,4 +1,5 @@
-baseurl = "https://vikasontech.netlify.com"
+#baseurl = "https://vikasontech.netlify.com"
+baseurl = ""
 title = "Vikas Blogs"
 theme = "erblog"
 paginate = 10
@@ -9,7 +10,7 @@ footnoteReturnLinkContents = "^"
 
 [params]
     author = "Vikas Verma"
-    logo  = "self/img/avater.jpg"
+    logo  = "/self/img/avater.jpg"
     # logo = "//blog.ertuil.top/avater.png"
     bio = """
     <p>Passionate developer with 9+ years of development experience. Certified Professional Scrum Master, Blogger.</p>
