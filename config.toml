@@ -8,7 +8,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
 [Author] # Used in authorbox
   name = "Vikas Verma"
-  bio = "Hi, I am Vikas, I am certified AWS Solution architect(AWS-C02), and Professional Scrum Master(PSM), working as Senior Software Developer at Ascend Corp, Bangkok, Thailand with more than 9 years of experience IT, I like reading and writing blogs. #java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming"
+  bio = "Hi, I am Vikas, I am certified **AWS Solution architect(AWS-C02)**, and **Professional Scrum Master(PSM)**, working as Senior Software Developer at Ascend Corp, Bangkok, Thailand with more than 9 years of experience IT, I like reading and writing blogs.#java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming"
   avatar = "img/avatar.jpg"
 
 [Params]
