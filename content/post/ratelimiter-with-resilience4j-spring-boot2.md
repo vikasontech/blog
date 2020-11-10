@@ -4,7 +4,6 @@ date: 2020-06-28T00:55:12+07:00
 description: "Ratelimiter example with spring-boot and Resilience4j"
 tags: ["spring-boot","resilience4j","ratelimiter","example"]
 categories: ["Technical"]
-series: ["resilience4j"]
 draft: false 
 ---
 

@@ -7,7 +7,6 @@ slug = "spring-boot-resilience4j-circuitbreaker-example"
 tags = ["spring-boot","resilience4j","circuitbreaker","example"]
 categories = ["Technical"]
 externalLink = ""
-series = ["resilience4j"]
 +++
 
 ***Introduction***

@@ -3,11 +3,8 @@ draft = false
 date = 2018-11-18T11:49:10+07:00
 title = "Setup Keycloak with Docker"
 description = "Introduction of Keycloak AAA"
-slug = "" 
 tags = ["keycloak","docker","setup"]
 categories = ["Technical"]
-externalLink = ""
-series = ["keycloak"]
 
 +++
 

@@ -6,7 +6,6 @@ description = ""
 tags = ["spring-boot","jwt","oauth2","security"]
 categories = ["Technical"]
 externalLink = "In this article we shall see example of how to secure a spring boot rest application with Spring Boot2, Spring Security, Oauth2, and JWT token."
-series = [""]
 +++
 
 ***Introduction***

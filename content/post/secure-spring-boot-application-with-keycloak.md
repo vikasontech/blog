@@ -7,8 +7,8 @@ slug = ""
 tags = ["keycloak","secrity","spring-boot"]
 categories = ["Technical"]
 externalLink = ""
-series = ["keycloak"]
 +++
+
 This is the last blog of the series of securing spring boot application with keycloak. It is recommended to go through this [first blog]({{< ref setup-keycloak-with-docker.md>}}) and [second blog]({{< ref setup-keycloak-sercurity-for-spring-boot-application.md >}}) here. 
 
 

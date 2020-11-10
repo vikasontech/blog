@@ -1,71 +1,82 @@
-baseurl = "https://vikasontech.github.io"
+baseURL = ""
+languageCode = "en-us"
 title = "Vikas Blogs"
-theme = "erblog"
-paginate = 10
-languageCode = "en"
-DefaultContentLanguage = "en"
-enableInlineShortcodes = true
-footnoteReturnLinkContents = "^"
+theme = "mainroad"
 
-[params]
-    author = "Vikas Verma"
-    logo  = "/self/img/avater.jpg"
-    # logo = "//blog.ertuil.top/avater.png"
-    bio = """
-    <p>Passionate developer with 9+ years of development experience. Certified Professional Scrum Master, Blogger.</p>
-    <br/>
-    <p>#java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming</p>
-    <br/><p>Welcome to my world</p>
-    """
-    copyright = "Copyright © 2019–2020, Vikas Verma"
+disqusShortname = "" # Enable Disqus comments by entering your Disqus shortname
+googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
-#[[menu.main]]
-#    identifier = "about"
-#    name = "About"
-#    url = "/about/"
-#    weight = 10
+[Author] # Used in authorbox
+  name = "Vikas Verma"
+  bio = "Passionate developer with 9+ years of development experience. Certified Professional Scrum Master, Blogger. #java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming"
+  avatar = "img/avatar.jpg"
 
-[[menu.footer]]
-    identifier = "home"
-    name = "home"
-    url = "/"
-    weight = 1
+[Params]
+  subtitle = "" # Deprecated in favor of .Site.Params.logo.subtitle
+  description = "Vikas's Personal blog about everything" # Site description. Used in meta description
+  copyright = "Vikas Verma" # Footer copyright holder, otherwise will use site title
+  opengraph = true # Enable OpenGraph if true
+  schema = true # Enable Schema
+  twitter_cards = true # Enable Twitter Cards if true
+  readmore = false # Show "Read more" button in list if true
+  authorbox = true # Show authorbox at bottom of pages if true
+  toc = true # Enable Table of Contents
+  pager = true # Show pager navigation (prev/next links) at the bottom of pages if true
+  post_meta = ["author", "date", "categories", "translations"] # Order of post meta information
+  mainSections = ["post", "blog", "news"] # Specify section pages to show on home page and the "Recent articles" widget
+  dateformat = "2006-01-02" # Change the format of dates
+  mathjax = true # Enable MathJax
+  mathjaxPath = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js" # Specify MathJax path
+  mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # Specify MathJax config
+  googleFontsLink = "https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" # Load Google Fonts
+  highlightColor = "" # Deprecated in favor of .Site.Params.style.vars.highlightColor
+  customCSS = ["css/custom.css"] # Include custom CSS files
+  customJS = ["js/custom.js"] # Include custom JS files
 
-[[menu.footer]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 2
+[Params.style.vars]
+  highlightColor = "#e22d30" # Override highlight color
 
-[taxonomies]
-category = "categories"
-tag = "tags"
-series = "series"
+  # Override font-family sets. Secondary font-family set responsible for pre, code, kbd, and samp tags font
+  # Take care of different quotes OR escaping symbols in these params if necessary
+  fontFamilyPrimary = "'Open Sans', Helvetica, Arial, sans-serif"
+  fontFamilySecondary = "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
 
-[[menu.icon]]
-    name= "fab fa-github fa-2x"
-    weight = 1
-    url = "https://github.com/vikasontech/"
-[[menu.icon]]
-    name = "fab fa-twitter"
-    weight = 2
-    url = "https://twitter.com/vikas_verma_on/"
-[[menu.icon]]
-    name = "fab fa-linkedin"
-    weight = 3
-    url = "https://www.linkedin.com/in/vikaskumarverma/"
-[[menu.icon]]
-    name = "far fa-envelope-open"
-    weight = 4
-    url = "mailto:vikason@gmail.com"
-[[menu.icon]]
-    name = "fab fa-rss fa-2x"
-    weight = 5
-    url = "index.xml"
-    rel = "alternate"
-    type = "application/rss+xml"
+[Params.logo]
+  #image = "img/placeholder.png" # Logo image. Path relative to "static"
+  title = "Vikas Verma" # Logo title, otherwise will use site title
+  subtitle = "Blogs related to Java Kotlin and Scala" # Logo subtitle
 
-[readingTime]
-one = "One minute to read"
-other = "{{.Count}} minutes to read"
+[Params.sidebar]
+  home = "right" # Configure layout for home page
+  list = "left"  # Configure layout for list pages
+  single = false # Configure layout for single pages
+  # Enable widgets in given order
+  widgets = ["recent", "categories", "taglist", "social", "languages"]
+  # alternatively "ddg-search" can be used, to search via DuckDuckGo
+  # widgets = ["ddg-search", "recent", "categories", "taglist", "social", "languages"]
 
+[Params.widgets]
+  recent_num = 5 # Set the number of articles in the "Recent articles" widget
+  tags_counter = false # Enable counter for each tag in "Tags" widget
+
+[Params.widgets.social]
+  # Enable parts of social widget
+  #facebook = "vikas.on"
+  twitter = "vikas_verma_on"
+  #instagram = "username"
+  linkedin = "vikaskumarverma"
+  #telegram = "username"
+  github = "vikasontech"
+  #gitlab = "username"
+  #bitbucket = "username"
+  email = "vikason[at]gmail[dot]com"
+
+# Custom social links
+#[[Params.widgets.social.custom]]
+#  title = "Youtube"
+#  url = "https://youtube.com/user/username"
+#  #icon = "youtube.svg" # Optional. Path relative to "layouts/partials"
+
+[[Params.widgets.social.custom]]
+  title = "Home"
+  url = "http://vikasverma.tech"
