@@ -13,7 +13,7 @@ googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
 [Params]
   subtitle = "" # Deprecated in favor of .Site.Params.logo.subtitle
-  description = "Vikas's Personal blog about everything" # Site description. Used in meta description
+  description = "Personal blogs on different technologies." # Site description. Used in meta description
   copyright = "Vikas Verma" # Footer copyright holder, otherwise will use site title
   opengraph = true # Enable OpenGraph if true
   schema = true # Enable Schema
