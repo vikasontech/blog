@@ -1,7 +1,7 @@
 ---
 title: "What are the Message Endpoints?"
 date: 2020-11-14T12:35:51+07:00
-draft: true
+draft: false
 categories:
   - "Spring Integration"
 ---
