@@ -26,7 +26,7 @@ Rate limiting is technique to help to limit the number of requests or type of re
 
 ***Dependencies***
 
-We need to add following dependencies in `pom.xml` file - 
+We need to add the following dependencies in the `pom.xml` file - 
 
 * resilience4j-reactor
 * resilience4j-circuitbreaker
@@ -56,14 +56,14 @@ The details of the configuration is as below -
 | Config property	| Default value	| Description
 |-----------------|---------------|------------
 timeoutDuration	| 5 [s]	|The default wait time a thread waits for a permission
-limitRefreshPeriod	| 500 [ns]	| The period of a limit refresh. After each period the rate limiter sets its permissions count back to the limitForPeriod value
+limitRefreshPeriod	| 500 [ns]	| The period of a limit refresh. After each period the rate limiter sets its permissions to count back to the `limitForPeriod` value
 limitForPeriod | 50	| The number of permissions available during one limit refresh period
 
 ---
 
 ***Add rate limiter to the service***
 
-I created a simple service that takes no arguments, and return some string mono. We shall add the `@RateLimiter` annotation, and pass the config name and fallback method name, that would be call in case of request denied by the rate limiter. 
+I created a simple service that takes no arguments, and return some string mono. We will add the `@RateLimiter` annotation, and pass the config name, fallback method name that gett calls in case of request denied by the rate limiter. 
 
 {{< highlight java >}}
 
@@ -74,7 +74,7 @@ fun process(): Mono<String> {
 
 {{< /highlight >}}
   
-The fallback method name is `processFallback` it should be in the same class and it should have the same signature but with an extra parameter for the `Throwable` class for the exception handling.
+The fallback method name is `processFallback`. The method should be in the same class with the same signature but with an extra parameter for the `Throwable` class for the exception handling.
 
 So fallback method should look like this 
 
@@ -103,7 +103,7 @@ fun processFallback(exp: Throwable): Mono<String> {
 
 ***Run Application***
 
-Before running the application check the status of the available permission for this service using actuator health endpoint -
+Let's check the status of the available permission for this service. 
 
 ![health status](https://l6w3wq.ch.files.1drv.com/y4mtm5nBYEJygGMutdZoW1Ra-_A5iimrNJTt1ba6n2HPdjMmL8D-fO-e1McOQPuZyCxX1Qh20E8XXQljhGSFQUO8pN12REYNqD9AhC_ROe7LrpxFPMNdM-4qmc_O65vX3bqmHVKMfO97gzPKW2a5S19X3LPaG4Mojcu7_KdypNsxRo-JntupLYM9dE9iFjBYQ-GELQljBzMvS43jvH72nPqZw?width=660&height=363&cropmode=none)
 
@@ -122,13 +122,14 @@ Content-Type: text/event-stream;charset=UTF-8
 transfer-encoding: chunked
 
 data:ah what do you want ...
+
 {{< /highlight >}}
 
 **Rate limiter permission details**
 
 ![Rate limiter status](https://lqw3wq.ch.files.1drv.com/y4mwcmpdFIRYiNcVModlFZret7MP6gBxiX_y0Ckasblcb2Uey_VcRe-qSrFjrotF8ustGP80BfoOGwxjVdS9Ik36jCeNyBrfLooELHej4nJVtRnZkB_rqL2CpgZi1miurq9j59KmlD2o05aI5ro1yXo8BQ_AXV0thsydWkpsFvSXNS7aussMROXnLDPpPqiLhyg4bY_Hk52DrKzVeBzU3tTDQ?width=660&height=363&cropmode=none)
 
-Now this service have zero permission; now call it again and see, the call should be rejected now - 
+Now, this service has zero permission; now call it again and see, the call should reject now - 
 
 {{< highlight bash >}}
 http :8080/process
