@@ -97,11 +97,11 @@ The `nullChannel` is behave like `/dev/null`. You can send any message to it tha
 
 # Polar
 
-Poller is used to poll the message from the pollable message channels. The `Poller` provide many configuration options. You can configure the polling rate. We would see poler in later chapters. 
+Poller is used to poll the message from the Pollable message channels. The `Poller` provide many configuration options. You can configure the polling rate. We would see poler in later chapters. 
 
 # Channel Adapter
 
-Channel adapters are used to connect your application to the messaging system. Channel adapter have the access to the application apis or data and it can publish the messages based on this data. Channels adapters are used for ___oneway communication___[^2]. Means you send a message to the adapter and then forget. If you want two way communcation you can consider the `MessageGateway`
+Channel adapters are used to connect your application to the messaging system. Channel adapter have the access to the application apis or data and it can publish the messages based on this data. Channels adapters are used for ___oneway communication___[^2]. Means you send a message to the adapter and then forget. If you want two way communication you can consider the `MessageGateway`
 
 There are two type of Channel adapters - 
 
@@ -114,7 +114,7 @@ ___todo: Add diagram.___
 
 * Outbound channel adapter
 
-The channel adapters that sends the message from the external system are called ___outbout channel adapter___[^5] [^6].
+The channel adapters that sends the message from the external system are called ___outbound channel adapter___[^5] [^6].
 
 ___todo: Add diagram.___
 
