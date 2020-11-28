@@ -6,6 +6,7 @@ description: "Intro to Spring integration Message Channels "
 tags: ["spring-boot","spring-integration"]
 categories: ["Technical"]
 ---
+
 # Message Channel 
 
 A message channel is used to transport the message from one messaging endpoint to another. It integrate the messaging endpoints. Message channel used to decouple the message producer and consumer.
@@ -34,45 +35,44 @@ This message channel allow to pole the message using any poller. This is buffere
 
 ## 3. Subscribable Channel Interface
 
-A non-buffering message channel is used for the messages broadcasting  . The consumers that are subscribe to that channel will receive that message.
+A non-buffering message channel is used for the messages broadcasting . The consumers that are subscribe to that channel will receive that message.
 
 # Message Channel Implementation
 
 ## DirectChannel
 		
-A default message channel, which run on a single thread. Its a blocking channel. It is point-to-point channel. A DirectChannel implements `SubscribableChannel`, hence it dispatch messages to the subscriber.  It also provide load balencing with with default stretagy as round-robin, in case of more than one subscriber to the message channel. The load balancing is also work in conjuction with a `failover` properties. By default if the value of the property is `true`. In case of some exception occurs in one subscriber then the message will be sent to the next subscriber.
+A default message channel, which run on a single thread. Its a blocking channel. It is point-to-point channel. A DirectChannel implements `SubscribableChannel`, hence it dispatch messages to the subscriber.  
 
-___todo: Add diagram.___
-	
+![Direct Channel](https://i.ibb.co/ctNhHPH/SI-BOOK-Direct-Channel.png)
+
+It also provide load balencing with with default stretagy as round-robin, in case of more than one subscriber to the message channel. The load balancing is also work in conjuction with a `failover` properties. By default if the value of the property is `true`. In case of some exception occurs in one subscriber then the message will be sent to the next subscriber.
+
+![Direct Channel Failover](https://i.ibb.co/8KHZ2YC/SI-BOOK-Direct-Channel-Failover.png)	
+
 ## PublishSubscribeChannel
 
 This channel is used for broadcasting the messages to the many subscribers specially for notification purpose. This channel is used for sending only that is why it does not have the receive method. The subscriber must pole the data from the message channel. The return value of the sending method is true in case the minimum number of receiver receive the message and handle the message successfully. You can change the value of minimum subscriber by changing the property of the `minSubscribers`.
 
-___todo: Add diagram.___
+![Publis subscribe channel](https://i.ibb.co/PF0ZGhm/SI-BOOK-Pub-sub-Channel.png)
 
 ## QueueChannel
 
 A QueueChannel is a  non-blocking message channel. It is backed by and `BlockedQueue` to save the messages. You can specify the minimum capacity of queue. The default capacity is `Integer.MAX_VALUE`. It is always recommended to provided some initial capacity in order to avoid the `OutOfMemoryErrors`. For a zero capacity version use the `RendezvousChannel`. 
 
-___todo: Add diagram.___
 
 ## PriorityChannel
 
 PriorityChannel extends the `QueueChannel`. It provide priority of the message by using comparator. Message header is the default comparator. You can also use the custom comparator using payload data.
 
-___todo: Add diagram.___
 
 ## RendezvousChannel
 
 RendezvousChannel extends the `QueueChannel`. The only deifference between RendezvousChannel and QueueChannel is of the queue that it used to store the message. Instead of bounded `BlockingQueue` it uses the  zero-capacity `SynchronousQueue`. 
 
-___todo: Add diagram.___
-
 ## ExecutorChannel
 
 ExecutorChannel is same as `DirectChannel`. It also provide the `load-balancing` and `failover` properties. The only key difference is that it delegates to the `TaskExecutor` which means that the sender will not blocked until the receiver finished the processing. Since the sender and receiver will execute in different threads it does not support transactions.
 
-___todo: Add diagram.___
 
 ## FluxMessageChannel
 
@@ -80,7 +80,9 @@ This is special type of message channel used with `ReactiveStreams`. It implemen
 
 ## Scoped Channel
 
-Scoped channel is used is used to set the boundries of the message channel. It allow to specify the scope of the channel where this channel can be used to send or receive the messages. You can use the `scope` attribute value to a channel. todo: rephrese
+Scoped channel is used is used to set the boundries of the message channel. It allow to specify the scope of the channel where this channel can be used to send or receive the messages. You can use the `scope` attribute value to a channel. 
+
+__todo: rephrese__
 
 # Special Channels
 
@@ -109,19 +111,18 @@ There are two type of Channel adapters -
 
 The channel adapters that receive the message from the external system are called ___inbound channel adapter___[^3] [^4].
 
-___todo: Add diagram.___
-
-
 * Outbound channel adapter
 
 The channel adapters that sends the message from the external system are called ___outbound channel adapter___[^5] [^6].
 
-___todo: Add diagram.___
-
+![Channel Adapter](https://i.ibb.co/1MGBqcv/SI-BOOK-Channel-Adapter.png)
 
 # Messaging bridge
 
 As the name suggests, A message bridges is used as a bridge between two messaging systems. It receive a message transform it and then re-send it to the another system. For example you might have and serving that receive REST format message. There is another service that accept the message in SOAP format. To connect these two service you can use the message bridge that could receive the message from both the systems, and send then one another.
+
+![Message Bridge](https://i.ibb.co/DkLRHHk/SI-BOOK-message-bridge.png)
+
 
 ___todo: Add diagram.___
 
@@ -135,3 +136,4 @@ ___todo: Add diagram.___
 [ref1](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html)
 
 [ref2](https://docs.wso2.com/display/EIP/Messaging+Bridge)
+
