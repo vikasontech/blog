@@ -119,6 +119,3 @@ As the name suggests, A message bridge is use as a bridge between two messaging 
 
 ![Message Bridge](https://i.ibb.co/DkLRHHk/SI-BOOK-message-bridge.png)
 
-[ref1](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html)
-
-[ref2](https://docs.wso2.com/display/EIP/Messaging+Bridge)
