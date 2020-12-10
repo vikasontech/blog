@@ -5,12 +5,12 @@ title = "Spring Security With JWT and Oauth2 With Spring Boot"
 description = ""
 tags = ["spring-boot","jwt","oauth2","security"]
 categories = ["Technical"]
-externalLink = "In this article we shall see example of how to secure a spring boot rest application with Spring Boot2, Spring Security, Oauth2, and JWT token."
+externalLink = "In this article we will see example of how to secure a spring boot rest application with Spring Boot2, Spring Security, Oauth2, and JWT token."
 +++
 
 ***Introduction***
 
-In this article we shall see example of how to secure a spring boot rest application with Spring Boot2, Spring Security, Oauth2, and JWT token.
+In this article we will see example of how to secure a spring boot rest application with Spring Boot2, Spring Security, Oauth2, and JWT token.
 
 ***1. Source Code Repository***
 
@@ -205,12 +205,7 @@ Create a class ```AuthenticationServerConfig.java``` that extends ```Authorizati
 
 ***8.1. Configure Clients of the application***
 
-
-
-the code is self-explanatory, we jest configure the client details that are stored in memory. All the clients’ details are store in the application.property file.
-
-*Autowire the jwtConfigProperties instance.
-
+The code is self-explanatory, we jest configure the client details that are stored in memory. All the clients’ details are store in the application.property file.
 
 ***8.2. Configure the Authorization endpoints***
 
@@ -262,11 +257,11 @@ Finally set the roles that can access the application using ```@PostAuthorize```
 
 Run below command to run the mysql db in docker
 
-```docker-compose -f docker/docker-compose up```
+    docker-compose -f docker/docker-compose up
 
-Now all the configurations are done, now we can run the application using below maven command in terminal
+Now all the configurations has done, now we can run the application using below maven command in terminal
 
-```mvn spring-boot:run```
+    mvn spring-boot:run
 
 ***11.1 Access Resource with User credentials***
 
@@ -295,7 +290,7 @@ Result-
 
 {{< gist vikasontech aa0fe6aa21e969c6a8e4133ed1f616a5>}}
 
-** "Y2xpZW50OnNlY3JldA==" is Base64 encoded client-id:secret. you can encode and decode in base64 format using this site. The format of client-id and client-secret should be 'client-id:secret'.
+***"Y2xpZW50OnNlY3JldA=="*** is Base64 encoded client-id:secret. you can encode and decode in base64 format using this site. The format of client-id and client-secret should be 'client-id:secret'.
 
 Result-
 
@@ -316,6 +311,7 @@ To access the resource that required admin privilege you need to get the access 
 {{< gist vikasontech eb15055068f2984efbca36ce60002998>}}
 
 Result-
+{{< highlight text >}}
 
 Access admin resources -
 
@@ -324,6 +320,7 @@ Hello Admin!!!
 Access user resources -
 
 Hello User!!!
+{{< /highlight >}}
 
 
 ***11.2.3. Access the User resources***
@@ -331,6 +328,8 @@ Hello User!!!
 {{< gist vikasontech 6246993ca66c85b8f0773ce7351b38a2>}}
 
 Result-
+{{< highlight text >}}
 Hello User!!!
+{{< /highlight>}}
 
 That's all for the Authentication and Authorization with Oauth2. You can access the resource from [GitHub](https://github.com/vikasontech/SpringSecurityWithOauth).
