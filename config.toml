@@ -4,7 +4,7 @@ title = "Vikas Verma"
 theme = "mainroad"
 
 disqusShortname = "" # Enable Disqus comments by entering your Disqus shortname
-googleAnalytics = "UA-18533674" # Enable Google Analytics by entering your tracking id
+googleAnalytics = "G-K3J34BEP55" # Enable Google Analytics by entering your tracking id
 
 [Author] # Used in authorbox
   name = "Vikas Verma"
