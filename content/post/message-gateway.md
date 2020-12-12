@@ -1,7 +1,7 @@
 ---
 title: "Message Gateway"
 date: 2020-12-12T12:28:23+07:00
-draft: true
+draft: false 
 description: An walk through spring integration message gateway.
 categories:
   - "Spring Integration"
