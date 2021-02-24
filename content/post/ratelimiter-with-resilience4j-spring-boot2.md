@@ -1,6 +1,7 @@
 ---
 title: "Ratelimiter With Resilience4j Spring Boot2"
 date: 2020-06-28T00:55:12+07:00
+updated: 2020-06-28T00:55:12+07:00
 description: "Ratelimiter example with spring-boot and Resilience4j"
 tags: ["spring-boot","resilience4j","ratelimiter","example"]
 categories: ["Technical"]
@@ -16,22 +17,17 @@ Rate limiting is technique to help to limit the number of requests or type of re
 
 ***Version Details***
 
-* **spring-boot:2.2.6.RELEASE**
-* **spring-cloud:Hoxton.SR4**
-* **Resilience4j:1.1.0**
+* **spring-boot:2.4.3**
+* **Resilience4j:1.7.0**
 * **Java:11** 
 * **Kotlin:1.3.71**
- 
 ---
 
 ***Dependencies***
 
-We need to add the following dependencies in the `pom.xml` file - 
+We need to add the following dependencies in the [pom.xml](https://github.com/vikasontech/spring-resilience4j-rate-limiter-demo/blob/master/pom.xml) file - 
 
-* resilience4j-reactor
-* resilience4j-circuitbreaker
 * resilience4j-spring-boot2
-* spring-boot-starter-actuator
 * spring-boot-starter-aop
 
 ---
@@ -44,9 +40,10 @@ Open `application.yml` and add the following configuration for the `rate limiter
 resilience4j.ratelimiter:
   instances:
     processService:
-      limitForPeriod: 10
-      limitRefreshPeriod: 1s
-      timeoutDuration: 0
+      limitForPeriod: 1
+      limitRefreshPeriod: 15s
+      timeoutDuration: 1
+      registerHealthIndicator: true
 
 {{< /highlight >}}
 
@@ -69,7 +66,7 @@ I created a simple service that takes no arguments, and return some string mono.
 
 @RateLimiter(name="processService", fallbackMethod = "processFallback")
 fun process(): Mono<String> {
-  return Mono.just("Hello World ...")
+  return Mono.just("Hey there! what do you want ...")
 }
 
 {{< /highlight >}}
@@ -121,7 +118,7 @@ HTTP/1.1 200 OK
 Content-Type: text/event-stream;charset=UTF-8
 transfer-encoding: chunked
 
-data:ah what do you want ...
+data:Hey there! what do you want ...
 
 {{< /highlight >}}
 
@@ -145,14 +142,14 @@ Content-Type: text/event-stream;charset=UTF-8
 transfer-encoding: chunked
 
 data:inside from fallback method because `RateLimiter 'processService' does not permit further calls`
+
 {{< /highlight >}}
 
 ---
 
 ***Source Code***
 
-The full source code is available at [GitHub](https://github.com/vikasontech/spring-resilience4j-rate-limiter-demo.git)
-
+The full source code is available at [GitHub](https://github.com/vikasontech/spring-resilience4j-rate-limiter-demo/tree/resilience4j-1.7.0)
 ---
 
 ***Reference***
