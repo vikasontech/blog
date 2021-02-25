@@ -8,31 +8,33 @@ categories: ["Technical"]
 draft: false 
 ---
 
-***Introduction***
+## Introduction
+---
 
 Rate limiting is technique to help to limit the number of requests or type of request received by a server. It help to scale and increase the reliability of the system. As per resilience4j doc    
 > Rate limiting is an imperative technique to prepare your API for scale and establish high availability and reliability of your service. But also, this technique comes with a whole bunch of different options of how to handle a detected limits surplus, or what type of requests you want to limit. You can simply decline this over limit request, or build a queue to execute them later or combine these two approaches in some way.
 
----
 
-***Version Details***
+## Version Details
+---
 
 * **spring-boot:2.4.3**
 * **Resilience4j:1.7.0**
 * **Java:11** 
 * **Kotlin:1.3.71**
+
+
+## Dependencies
 ---
 
-***Dependencies***
-
-We need to add the following dependencies in the [pom.xml](https://github.com/vikasontech/spring-resilience4j-rate-limiter-demo/blob/master/pom.xml) file - 
+We need to add the following dependencies in the [pom.xml](https://github.com/vikasontech/spring-resilience4j-rate-limiter-demo/blob/resilience4j-1.7.0/pom.xml) file - 
 
 * resilience4j-spring-boot2
 * spring-boot-starter-aop
 
----
 
-***Configure rate limiter in the application.yml file***
+## Configure rate limiter in the application.yml file
+___
 
 Open `application.yml` and add the following configuration for the `rate limiter`- 
 
@@ -56,9 +58,8 @@ timeoutDuration	| 5 [s]	|The default wait time a thread waits for a permission
 limitRefreshPeriod	| 500 [ns]	| The period of a limit refresh. After each period the rate limiter sets its permissions to count back to the `limitForPeriod` value
 limitForPeriod | 50	| The number of permissions available during one limit refresh period
 
----
-
-***Add rate limiter to the service***
+## Add rate limiter to the service
+___
 
 I created a simple service that takes no arguments, and return some string mono. We will add the `@RateLimiter` annotation, and pass the config name, fallback method name that gett calls in case of request denied by the rate limiter. 
 
@@ -82,9 +83,9 @@ fun processFallback(exp: Throwable): Mono<String> {
 }
 {{< /highlight >}}
 
----
 
-***Create controller class***
+## Create controller class
+---
 
 The controller class should accept a get request and return the response Mono -
 
@@ -96,9 +97,8 @@ fun processFallback(exp: Throwable): Mono<String> {
 }
 {{< /highlight >}}
 
+## Run Application
 ---
-
-***Run Application***
 
 Let's check the status of the available permission for this service. 
 
@@ -145,14 +145,16 @@ data:inside from fallback method because `RateLimiter 'processService' does not 
 
 {{< /highlight >}}
 
----
 
-***Source Code***
+## Source Code
+---
 
 The full source code is available at [GitHub](https://github.com/vikasontech/spring-resilience4j-rate-limiter-demo/tree/resilience4j-1.7.0)
+
+
+## References
 ---
 
-***Reference***
 - https://resilience4j.readme.io/docs/getting-started-3
 - https://resilience4j.readme.io/docs/ratelimiter
 
