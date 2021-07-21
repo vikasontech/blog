@@ -4,7 +4,7 @@ date = 2018-11-30T12:32:26+07:00
 title = "Secure spring boot application with keycloak"
 description = "Configure keycloak for spring application"
 slug = "" 
-tags = ["keycloak","secrity","spring-boot"]
+tags = ["keycloak","security","spring-boot"]
 categories = ["Technical"]
 externalLink = ""
 +++
