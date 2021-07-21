@@ -271,6 +271,9 @@ After server started, We can get the access token. Run below command to get the 
 
 {{< gist vikasontech 6d9af9361b72403a5685f3613c0bddac>}}
 
+***"Y2xpZW50OnNlY3JldA=="*** is Base64 encoded client-id:secret. you can encode and decode in base64 format using this site. The format of client-id and client-secret should be 'client-id:secret'.
+
+
 Result-
 
 {{< highlight json >}}
@@ -289,8 +292,6 @@ Result-
 ***11.2.1. Get the access token***
 
 {{< gist vikasontech aa0fe6aa21e969c6a8e4133ed1f616a5>}}
-
-***"Y2xpZW50OnNlY3JldA=="*** is Base64 encoded client-id:secret. you can encode and decode in base64 format using this site. The format of client-id and client-secret should be 'client-id:secret'.
 
 Result-
 
