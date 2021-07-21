@@ -14,7 +14,7 @@ In this article we will see example of how to secure a spring boot rest applicat
 
 ***1. Source Code Repository***
 
-The code used in this article is available in this repository GitHub.
+The code used in this article is available in this repository [GitHub](https://github.com/vikasontech/SpringSecurityWithOauth).
 
 ***2. Dependencies***
 
