@@ -1,7 +1,9 @@
 ---
-title: "Multitenancy Hibernate Spring Boot"
+title: "Multitenancy using Spring data JPA and hibernate"
 date: 2022-02-25T01:08:24+07:00
 draft: false 
+tags: ["Multitenancy", "Hibernate", "spring-boot", "JPA"]
+categories: ["Technical"]
 ---
 
 ## Introduction
