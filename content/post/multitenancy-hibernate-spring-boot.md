@@ -32,7 +32,7 @@ We will create a request interceptor that will intercept the request and add the
 
 Using this design we will use two databases master and replica, one for write operations and another for read operations.
 
-![Implement Multitenancy in spring-boot](https://tinyimg.io/i/KY4Q1hm.png)
+![Implement Multitenancy in spring-boot](https://tinyimg.io/i/Ye9iZ7q.png)
 
 ### Create entity class and repository 
 
