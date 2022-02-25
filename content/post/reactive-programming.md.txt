@@ -1,0 +1,287 @@
+---
+title: "Reactive Programming"
+date: 2021-10-28T09:40:51+07:00
+draft: true
+---
+
+# Introduction
+
+## What is Imperative Programming?
+
+For many years we have written an imperative style of coding. It is the oldest paradigm for programmers. In Imperative style of language, you generally focus on the how to do a certain task. The series of commands are given to the system. The system needs to follow that command. 
+
+There are many languages available in the market with this style of coding like - 
+* Java
+* Python
+* C 
+* Ruby 
+
+## What is Async Programming?
+
+Async programming is like parallel execution of the functions. More than one thread can execute in an isolated manner and notify the main thread when the task is finished. Async programming helps to increase the utilization of the resources, and also reduce the wait time.  However, managing threads can be harder. 
+
+## What is Reactive Programming? 
+
+Reactive programming is the combination of declarative programming and functional programming. It provides the stream of the data that can be processed and forwarded to the downstream functions. Below are are the principles of the reactive streams - 
+
+#### Principles Reactive Programming
+* Responsive
+* Reactive
+* Elastic
+* Message-Driven
+
+#### Responsive 
+
+The stream should be responsive, it should be able to respond in case of errors as well. In reactive programming the errors and exceptions are treated as the first class citizen. 
+Streams provided three channels 
+
+ * Data channel
+ * Complete channel
+ * Error Channel
+
+Data channel used for the stream data, Complete channel is used for the stream data in case of the publisher completing the sending the data. The Error channel streams the throne during the processing of the streams.
+
+Steams also helps to increase the resource utilization by removing the blocking code. 
+
+##### Reactive Stream features - 
+
+**Lazy loading**
+
+All the data in the stream is lazy loaded. Nothing will happen until you subscribe with the publishers. This lazy loading helps in memory utilization and CPU footprint. 
+
+**Handle Error at downstream**
+
+In event errors are treated as an event. Whenever any error occurs, the execution is stopped and it propagates downstream to the subscribers.   
+
+The subscribers need to handle the error. There are many ways to handle the error, like `onError` operator can be executed in case of error, or you can provide any alternate output  or operation in case of errors.
+
+**Hot and Cold Subscribers** 
+
+There are two types of subscribers in the reactive streams 
+
+1. **Hot Subscribers**
+When a subscriber subscribes to a publisher, the subscriber will get only new values that are being emitted by the server. It's like a TV broadcast, when you switch on TV, you will always get the current shows that are being broadcast on that channel.
+
+
+1. **Cold Subscribers**
+
+When a subscriber subscribes to a publisher, the subscriber will get all the values that are already emitted by the publisher.  
+
+## Functional Compositions
+
+In reactive programming you can compose many functions to complete an certain task. It increases the readability of the code.
+
+### When to use reactive programming?
+
+You can use reactive programming when you have blocking code, or blocking IO. You can make those functions reactive so that it will not impact the other options. You can also use the blocking code in reactive programming by wrapping the blocking code in the reactive operator like callback in the Reactor for example. 
+
+<!-- ### Core Concepts?
+
+> Reactive Streams is an initiative to provide a standard for asynchronous stream processing with non-blocking back pressure. This encompasses efforts aimed at runtime environments (JVM and JavaScript) as well as network protocols.
+
+\- https://www.reactive-streams.org/
+
+Reactive streams have four pillars -  -->
+
+<!-- ### pillars
+  1. Publisher
+  1. Subscriber
+  1. Subscription
+  1. Completion  -->
+
+### advantages?
+1. Abstraction, Reactive programming are concurrency agnostic; you do not need to do a thread management process. Thread management process is abstracted from you. You do not need to manage the threads, or do anything special to make an application concurrent.
+
+1. Functional composition: **TODO** 
+
+1. Error handling
+Errors are treated as the events. And the caller has the freedom to handle the exceptions. The exceptions are handled by the downstream services. 
+
+1. Backpressure 
+Reactive streams provide backpressure to signal the publisher that they stop, we cannot consume. and then when it is ready for consumption, send the request to the publisher for more items. By doing this we can prevent out of memory errors at the client.
+
+### disadvantages?
+
+
+#### Cons
+1. Paradigm  shift
+1. Steep learning curve
+1.
+
+### example
+
+####  Exception Handling 
+
+```
+package org.springreactive;
+
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springreactive.SamplePrograms.Person;
+import reactor.core.publisher.Flux;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class SampleProgramsTest {
+
+
+  final List<SamplePrograms.Person> peoples =
+      Arrays.asList(
+          SamplePrograms.Person.builder().age(20).name("sam").build(),
+          SamplePrograms.Person.builder().age(35).build(),
+          SamplePrograms.Person.builder().age(25).name("ved").build(),
+          SamplePrograms.Person.builder().age(18).name("vik").build(),
+          SamplePrograms.Person.builder().age(45).name("ong").build());
+  /* functional way using streams */
+  public void ageGreaterThanTake3(int age) {
+
+    final Flux<String> map = Flux.fromIterable(peoples)
+        .filter(it -> it.getAge() >= age)
+        .checkpoint("got the data")
+        .map(SamplePrograms.Person::getName)
+        .checkpoint("got the name")
+        .map(String::toUpperCase)
+        .map(String::toLowerCase);
+
+    Consumer<Throwable> errorHandler = e -> System.err.println(
+        "ERROR: " + e.getMessage());
+
+    final Runnable completer = () -> System.out.println("Done");
+
+    map.subscribe(System.out::println, errorHandler, completer);
+
+  }
+
+  /* doesn't want max age */
+  private void ageGreaterThan(int age) {
+    if (peoples.isEmpty()) {
+      System.out.println("no data found");
+    }
+
+    String name = null;
+    for (Person p : peoples) {
+      if (p.getAge() >= age) {
+        name = p.getName();
+        break;
+      }
+    }
+
+    if (name != null) {
+      System.out.println("Name of the Person is:  " + name);
+    }
+  }
+
+  /* functional way using streams */
+  private void ageGreaterThanTake2(int age) {
+
+    String name = peoples.stream()
+        .filter(it -> it.getAge() >= age)
+        .map(Person::getName)
+        .map(String::toUpperCase)
+        .map(String::toLowerCase)
+        .findFirst()
+        .orElse("No data found");
+
+    System.out.println(name);
+  }
+
+
+  @Test
+  @Order(1)
+  void testOlderFinder_Imperative() {
+    ageGreaterThan(32);
+  }
+  @Test
+  @Order(2)
+  void testOlderFinder_ImperativeWithStrams() {
+    ageGreaterThanTake2(32);
+  }
+
+  @Test
+  @Order(3)
+  void testOlderFinder_Reactive() {
+      ageGreaterThanTake3(32);
+  }
+}
+```
+
+testOlderFinder_Imperative
+
+![Imperative](https://tinyimg.io/i/84GMJYQ.png)
+
+testOlderFinder_ImperativeWithStreams
+
+![Imperative Streams](https://tinyimg.io/i/S8mt3sg.png)
+
+testOlderFinder_Reactive
+
+![Imperative Reactive](https://tinyimg.io/i/pLiPGC1.png)
+
+---
+
+
+## Why I need to do reactive programming? 
+
+---
+
+# DEBUGGING
+
+
+# Notes
+
+1. pros & cons
+1. talk about the data streams
+1. Exception handling
+    1. Backpressure
+    1. handle at downstream
+1. blocking calls
+
+Every new concept/paradigm is perceived as hard at the beginning.
+It's always hard to change one's way of thinking to absorb the
+conceptual change.
+Reactive is not supposed to address performance(unless you do a lot of blocking) but improve overall responsiveness/scalability/resiliency of your system thanks to the asynchronous message-driven architecture.
+By utilizing declarative approach, you achieve real Inversion of Control(yeah, that's not only Dependency Injection) code written using the reactive approach looks different but is much simpler because you abstract out handling asynchronous computations, thread management, scheduling, the composition of parallel data streams, back pressure, etc., and do not need to deal with that by yourself(imagine refactoring that later on)
+
+
+```
+The Schedulers class has static methods that give access to the following execution contexts:
+
+No execution context (Schedulers.immediate()): at processing time, the submitted Runnable will be directly executed, effectively running them on the current Thread (can be seen as a "null object" or no-op Scheduler).
+
+A single, reusable thread (Schedulers.single()). Note that this method reuses the same thread for all callers, until the Scheduler is disposed. If you want a per-call dedicated thread, use Schedulers.newSingle() for each call.
+
+An unbounded elastic thread pool (Schedulers.elastic()). This one is no longer preferred with the introduction of Schedulers.boundedElastic(), as it has a tendency to hide back pressure problems and lead to too many threads (see below).
+
+A bounded elastic thread pool (Schedulers.boundedElastic()). Like its predecessor elastic(), it creates new worker pools as needed and reuses idle ones. Worker pools that stay idle for too long (the default is 60s) are also disposed of. Unlike its elastic() predecessor, it has a cap on the number of backing threads it can create (default is number of CPU cores x 10). Up to 100 000 tasks submitted after the cap has been reached are enqueued and will be rescheduled when a thread becomes available (when scheduling with a delay, the delay starts when the thread becomes available). This is a better choice for I/O blocking work. Schedulers.boundedElastic() is a handy way to give a blocking process its own thread so that it does not tie up other resources. See How Do I Wrap a Synchronous, Blocking Call?, but doesn’t pressure the system too much with new threads.
+
+A fixed pool of workers that is tuned for parallel work (Schedulers.parallel()). It creates as many workers as you have CPU cores.
+
+Additionally, you can create a Scheduler out of any pre-existing ExecutorService by using Schedulers.fromExecutorService(ExecutorService). (You can also create one from an Executor, although doing so is discouraged.)
+```
+
+
+---
+
+The four pillars of object-oriented programming are:
+
+* Abstraction
+* Encapsulation
+* Inheritance
+* Polymorphism
+
+--- 
+
+# Reference
+https://www.reactivemanifesto.org/
+
+https://blog.redelastic.com/what-is-reactive-programming-bc9fa7f4a7fc
+
+https://www.softwaretestinghelp.com/juni-test-execution-order/
+
+
+
