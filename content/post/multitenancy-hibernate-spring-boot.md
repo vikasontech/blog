@@ -32,7 +32,7 @@ We will create a request interceptor that will intercept the request and add the
 
 Using this design we will use two databases master and replica, one for write operations and another for read operations.
 
-![Implement Multitenancy in spring-boot](https://tinyimg.io/i/Ye9iZ7q.png)
+![Implement Multitenancy in spring-boot](https://tinyimg.io/i/KY4Q1hm.png)
 
 ### Create entity class and repository 
 
@@ -93,9 +93,9 @@ public class DataSourceConfig {
     return DataSourceBuilder
         .create()
         .driverClassName("com.mysql.jdbc.Driver")
-        .username("merchant_profile")
-        .password("Welcome1")
-        .url("jdbc:mysql://localhost:3306/mapi?useSSL=false&characterEncoding=UTF-8")
+        .username("vikas")
+        .password("vikas")
+        .url("jdbc:mysql://localhost:3306/db1?useSSL=false&characterEncoding=UTF-8")
         .build();
   }
 
@@ -105,9 +105,9 @@ public class DataSourceConfig {
     return DataSourceBuilder
         .create()
         .driverClassName("com.mysql.jdbc.Driver")
-        .username("merchant_profile")
-        .password("Welcome1")
-        .url("jdbc:mysql://localhost:3306/mapi?useSSL=false&characterEncoding=UTF-8")
+        .username("vikas")
+        .password("vikas")
+        .url("jdbc:mysql://localhost:3306/db1?useSSL=false&characterEncoding=UTF-8")
         .build();
 
   }
