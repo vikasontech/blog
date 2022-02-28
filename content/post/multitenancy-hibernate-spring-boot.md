@@ -214,8 +214,8 @@ public class MultiTenantJpaConfiguration {
     hibernateProperties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, currentTenantIdentifierResolver);
     hibernateProperties.put(Environment.MULTI_TENANT_CONNECTION_PROVIDER, multiTenantConnectionProvider);
     hibernateProperties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
-		hibernateProps.put("spring.datasource.tomcat.testOnBorrow", true);
-		hibernateProps.put("spring.datasource.tomcat.validationQuery", "select 1");
+    hibernateProps.put("spring.datasource.tomcat.testOnBorrow", true);
+    hibernateProps.put("spring.datasource.tomcat.validationQuery", "select 1");
 
     return builder.dataSource(dataSource)
         .packages(CustomersEntity.class.getPackage().getName())
