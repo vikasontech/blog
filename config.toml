@@ -7,15 +7,15 @@ disqusShortname = "" # Enable Disqus comments by entering your Disqus shortname
 googleAnalytics = "UA-114039059-1" # Enable Google Analytics by entering your tracking id
 
 [Author] # Used in authorbox
-  name = "Vikas Verma"
-  bio = "Hi, I am Vikas, I am certified **AWS Solution architect(AWS-C02)**, and **Professional Scrum Master(PSM)**, working as Senior Software Developer at Ascend Corp, Bangkok, Thailand with more than 9 years of experience IT, I like reading and writing blogs.#java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming"
+  name = "Vikas Ve2ma"
+  bio = "Hi, I am Vikas, I am certified **AWS Solution architect(AWS-C02)**, and **Professional Scrum Master(PSM)**, working as Senior Software Developer at Ascend Corp, Bangkok, Thailand with more than 10 years of experience IT, I like reading and writing blogs.#java #PSM #kotlin #scala #springboot #reactiveProgramming, #functionalProgramming"
   avatar = "img/avatar.jpg"
 
 [Params]
   subtitle = "" # Deprecated in favor of .Site.Params.logo.subtitle
   description = "Personal blogs on different technologies." # Site description. Used in meta description
   copyright = "Vikas Verma" # Footer copyright holder, otherwise will use site title
-	copyright_year = "2021"
+	copyright_year = "2022"
   opengraph = true # Enable OpenGraph if true
   schema = true # Enable Schema
   twitter_cards = true # Enable Twitter Cards if true
