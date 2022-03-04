@@ -45,7 +45,7 @@ googleAnalytics = "UA-114039059-1" # Enable Google Analytics by entering your tr
 [Params.logo]
   #image = "img/placeholder.png" # Logo image. Path relative to "static"
   title = "Vikas Verma" # Logo title, otherwise will use site title
-  subtitle = "Blogs related to Java Kotlin and Scala, and some random topics" # Logo subtitle
+  subtitle = "Blogs related to Java technologies" # Logo subtitle
 
 [Params.sidebar]
   home = "right" # Configure layout for home page
